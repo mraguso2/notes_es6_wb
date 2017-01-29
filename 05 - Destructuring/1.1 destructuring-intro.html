@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring!</title>
+</head>
+<body>
+<script>
+  /*Destructuring: It allows us to extract data from arrays, objects, sets and maps 
+   *into their own variables. Allows us to extract properties from object or items from 
+   *an array, multiple at a time 
+  */
+
+  const person = {
+    first: 'Wes',
+    last: 'Bos',
+    country: 'Canada',
+    city: 'Hamilton',
+    twitter: '@wesbos'
+  };
+  /*Problem this solves
+   *need to make variable from data inside an obj or arr
+  
+   * const first = person.first
+   * const last = person.last
+  */
+
+  //destructuring syntax { } for taking from object
+  const { first, last, twitter } = person;
+  /*This says: give me a variable called first, last and twitter 
+   *and take it from the person object
+  */
+
+  //nested data
+  const wes = {
+    first: 'Wes',
+    last: 'Bos',
+    links: {
+      social: {
+        twitter: 'https://twitter.com/wesbos',
+        facebook: 'https://facebook.com/wesbos.developer',
+      },
+      web: {
+        blog: 'https://wesbos.com'
+      }
+    }
+  };
+
+  //Old Way To get twitter url
+  //const twitter = wes.links.social.twitter
+  
+  //New Way, will reach into the social object to get twitter and facebook
+  //You can rename your variables as you destructure them  
+  //{ nameVariableInObj: renamedVariable }
+  const { twitter: tweet, facebook: fb } = wes.links.social;
+  
+  //settings obj 
+  const settings = { width: 300, color: 'black' }  // also requires height, fontSize
+
+  //create 4 variables with defaults BUTTT using destructuring width and color from settings 
+  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+
+  console.log('width: ' + width); // 300 - destructured from settings
+  console.log('height: ' + height); //100 - using default, not in settings obj
+  console.log('color: ' + color); //black - destructed from settings
+  console.log('fontSize :' + fontSize); //25 - using default, not in settings obj
+
+</script>
+</body>
+</html>

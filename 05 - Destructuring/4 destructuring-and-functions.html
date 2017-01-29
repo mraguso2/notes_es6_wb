@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring in Action!</title>
+</head>
+<body>
+<script>
+
+  //function converting canadian money
+  //returns object
+  function convertCurrency(amount) {
+    const converted = {
+      USD: amount * 0.76,
+      GPB: amount * 0.53,
+      AUD: amount * 1.01,
+      MEX: amount * 13.30
+    };
+    return converted;
+  }
+  //***Old Way to get USA conversion
+  const hundo = convertCurrency(100);
+  console.log(hundo.USD);
+  //***
+  
+
+  //With destructuring you can sort of return multiple values from a function
+  //**New way w/ destructuring - immediately destructure the returning an object
+  const { USD, GPB, AUD, MEX } = convertCurrency(100);
+  //Doesn't matter the order ^ because from an object not an array
+  console.log(USD, AUD);
+  //can create 4 variables equal to country's conversion
+
+
+  /* You can now make order of arguments independent 
+   * Wrap the function arguments in { } - this will destructure them
+   * from the incoming object parameter called with the function
+   * Need to default the whole destructuring { } in case you call 
+   * tipCalc w/o arguments
+  */ 
+  function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
+    return total + (tip * total) + (tax * total);
+  }
+
+  //passing tipCalc an object and order doesn't matter
+  const bill = tipCalc({ tip: 0.20, total: 200 });
+  console.log(bill);
+
+</script>
+</body>
+</html>

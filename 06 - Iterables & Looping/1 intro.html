@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iterables & Looping</title>
+</head>
+<body>
+<script>
+  /* eslint-disable */
+   Array.prototype.shuffle = function() {
+     var i = this.length, j, temp;
+     if ( i == 0 ) return this;
+     while ( --i ) {
+      j = Math.floor( Math.random() * ( i + 1 ) );
+      temp = this[i];
+      this[i] = this[j];
+      this[j] = temp;
+    }
+    return this;
+  };
+
+  //iterable = anything that can be looped over ~array, string, map, set, generator
+  const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
+
+  cuts.shop = 'MM MEats';
+
+
+  //Con: confusing syntax, doesn't read well
+  // for (let i = 0; i < cuts.length; i++) {
+  //   console.log(cuts[i]);
+  // }
+
+  //Con: cannot break or continue the loop
+  // cuts.forEach((cut) => {
+  //   console.log(cut);
+  //   if(cut === 'Brisket') {
+  //     //break;
+  //     continue;
+  //   }
+  // });
+
+  //Con: iterates over EVERYTHING in the array, including things added to prototype 
+  // for (const index in cuts) {
+  //   console.log(cuts[index]);
+  // }
+
+  /* can use for all types of data except objs
+   * get best of all the loops
+  */
+  for (const cut of cuts) {
+    if(cut === 'Brisket') {
+      //break; //will stop the loop after brisket
+      continue; //skip when equals brisket
+    }
+    console.log(cut);
+  }
+
+</script>
+</body>
+</html>

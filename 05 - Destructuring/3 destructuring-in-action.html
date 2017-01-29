@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring in Action!</title>
+</head>
+<body>
+<script>
+  //Another use of destructuring
+  let inRing = 'Hulk Hogan';
+  let onSide = 'The Rock';
+  //Old way, you would have to create a tmp variable to swap values
+  
+  console.log(inRing, onSide);
+  //destructuring inRing & onSide 
+  [inRing, onSide] = [onSide, inRing];
+  console.log(inRing, onSide);
+
+</script>
+</body>
+</html>

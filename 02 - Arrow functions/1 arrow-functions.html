@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow functions → → </title>
+</head>
+
+<body>
+    <script>
+        /* Arrow functions:
+            1. More precise
+            2. Implicit returns (allows nifty 1 liners)
+            3. Doesn't rebind the value of this when you use an arrow fn inside another fn
+        */
+        
+        const names = ['wes', 'kait', 'lux'];
+        
+
+        const fullNames = names.map(function(name) {
+            return `${name} bos`;
+        });
+        
+        //delete the word function and put in a fat arrow
+        const fullNames2 = names.map((name) => {
+            return `${name} bos`;
+        });
+        
+        //only 1 parameter = wouldn't need the parentheses
+        const fullNames3 = names.map(name => {
+            return `${name} bos`;
+        });
+
+        //Implicit return- don't need to write the word return
+        //****Needs to be on one line and can remove the curly brackets
+        const fullNames4 = names.map(name => `${name} bos`);
+        console.log(fullNames4);
+
+        //if no arguments at all, you need to pass empty ()
+        const fullNames5 = names.map(() => `cool bos`);
+
+        //Always anonymous but you can put them in a variable
+        const sayMyName2 = (name) => {
+            console.log(`yo ${name}`)
+        }
+        sayMyName2('Mike');
+        
+        const sayMyName = (name) => {
+            alert(`Hello ${name}!`)
+        }
+
+        //sayMyName('Wes');
+
+    </script>
+</body>
+
+</html>

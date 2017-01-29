@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Template Strings!</title>
+</head>
+<body>
+<script>
+  const beer = {
+    name: 'Belgian Wit',
+    name: 'Belgian Wit',
+    brewery: 'Steam Whistle Brewery',
+    keywords: ['pale', 'cloudy', 'spiced', 'crisp']
+  };
+  
+  //a way to reuse this bit of code
+  function renderKeywords(keywords) {
+    return `
+      <ul>
+        ${keywords.map(keyword => `<li>${keyword}</li>`).join('')}
+      </ul>
+    `;
+  }
+
+  const markup = `
+    <div class="beer">
+      <h2>${beer.name}</h2>
+      <p class="brewery">${beer.brewery}</p>
+      ${renderKeywords(beer.keywords)}
+    </div>
+  `;
+
+  document.body.innerHTML = markup;
+
+  const party = {
+    type: 'Wedding',
+    drinks: ['beer', 'wine', 'liquor'],
+    foods: ['burgers', 'fries', 'cinnamon buns'],
+    title: function() {
+      const menu = () => console.log(`The drinks available: ${this.drinks} and the food available: ${this.foods}`);
+      menu();
+      return `This party is a ${this.type}`;
+    }
+  }
+
+  const markup2 = `
+    <h2>${party.type}</h2>
+    <p>
+    ${renderKeywords(party.drinks)}
+    </p>
+  `;
+  document.body.innerHTML = markup2;
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow Functions</title>
+</head>
+
+<body>
+
+    <style>
+        .wrap {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            font-weight: 100;
+            color: white;
+        }
+        
+        .box {
+            background: black url(https://unsplash.it/1500/1500?image=560&blur=0.5) center fixed no-repeat;
+            width: 50px;
+            height: 50px;
+            padding: 50px;
+            transition: width 0.2s, height 0.6s;
+            position: relative;
+        }
+        
+        .box.opening {
+            width: 500px;
+            height: 500px;
+        }
+        
+        .box h2 {
+            position: absolute;
+            width: 100%;
+            font-size: 100px;
+            transform: translateX(-200%);
+            transition: all 0.5s;
+            top: 0;
+        }
+        
+        .box p {
+            position: absolute;
+            width: 100%;
+            transform: translateX(200%);
+            transition: all 0.5s;
+            bottom: 0;
+        }
+        
+        .box.open > * {
+            transform: translateX(0%);
+        }
+
+    </style>
+
+    <div class="wrap">
+        <div class="box">
+            <h2>Wes Bos</h2>
+            <p class="social">@wesbos</p>
+        </div>
+    </div>
+
+    <script>
+        //using const b/c don't ever want reference to box to be different
+        
+        const box = document.querySelector('.box');
+        box.addEventListener('click', function() {
+            console.log(this); //logs this = the box
+            //look at what got called (addEventListener) and look to 
+            //left of it, box 
+            
+            /* arrow fn would return window but value of this is 
+             * inherited from whatever the parent scope is
+             * parent scope of this box.addEventListener is the window
+            */
+
+            //class names we want
+            let first = 'opening';
+            let second = 'open';
+
+            if (this.classList.contains(first)) {
+                [first, second] = [second, first]; //switch two variables values
+            }
+
+            this.classList.toggle(first);
+
+            /* using an arrow fn below b/c we want the value of this
+               to equal the box. If we used a function() {} the value
+               of this would be window but arrow fn's inherit their 
+               value of this from their parent
+            */
+            setTimeout(() => {
+                console.log(this);
+                this.classList.toggle(second);
+            }, 500);
+        });
+        
+        //example showing differnce between arrow and function
+        //and the value of this 
+        //arrow fn does not rebind this - uses parent scope 
+        
+        const obj = {
+            firstName: 'Mike',
+            lastName: 'Raguso',
+            getFullName: () => {
+                console.log(this); //window this
+            },
+            getFullName2: function() {
+                console.log(this); //obj this
+                const greet = () => {
+                    console.log(this); //obj this
+                }
+                greet();
+            }
+        }
+        
+        obj.getFullName();
+        obj.getFullName2();
+        
+        
+    </script>
+
+</body>
+
+</html>

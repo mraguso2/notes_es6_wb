@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tagged Templates</title>
+  <style>
+    .hl {
+      background: #ffc600;
+    }
+  </style>
+</head>
+<body>
+<script>
+  /*the es6 rest operator = ... is used b/c
+   *you dont know number of variables
+   *puts them into an array
+   *the strings array is always going to be larger than values array
+  */
+  function highlight(strings, ...values) {
+    let str = '';
+    strings.forEach((string, i) => {
+      str += `${string} <span contenteditable class="hl">${values[i] || ''}</span>`;
+    });
+    return str;
+  }
+
+  function highlightMR(strings, ...values) {
+    let str = '';
+    str = strings.map((string, i) => `
+        ${string} <span contenteditable class="hl"> ${(values[i] || '')} </span>
+      `).join('');
+
+    return str;
+  }
+  const name = 'Snickers';
+  const age = 100;
+
+  /*you put the name of function right in front of the template str
+   *this will run the function highlight and use the template string as part of the arg
+   *you need to use the rest operator to handle all of the variables ${} in template str
+   *those variables will become arguments
+   *
+   *Main idea - have a string, pass in reg str and get all the pieces and up to you 
+   *to craft it how you want 
+  */ 
+  //tagging with function name
+  const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+  document.body.innerHTML = sentence;
+  console.log(sentence);
+
+</script>
+</body>
+</html>

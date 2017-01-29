@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tagged Templates</title>
+  <style>
+    abbr {
+      border-bottom:1px dotted grey;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bio">
+
+  </div>
+
+<script>
+  const dict = {
+    HTML: 'Hyper Text Markup Language',
+    CSS: 'Cascading Style Sheets',
+    JS: 'JavaScript'
+  };
+
+  function addAbbrev(strings, ...values) {
+    // let filtered = values.filter(value => dict[value])
+    //   .map(value => `<abbr class="abbr" title="${dict[value]}">${value}</abbr> `);
+    // console.log(filtered);
+
+    const abbreviated = values.map(value => {
+      if(dict[value]) {
+        return `<abbr class="abbr" title="${dict[value]}">${value}</abbr>`;
+      }
+      return value;
+    });
+    console.log(abbreviated);
+
+    //reduce takes a function and a starting value
+    //it will loop over each one and build the string as we go
+    //and does that all inside of the function
+    return strings.reduce((sentence, string, i) => {
+      /*reduce builds on iterations so this return statement would be
+       *returning the 'sentence' that was just produced or in the first case use the
+       *second arg of reduce fn = '' and then add on the string item from the strings array
+       *and add the abbreviated value with index corresponding to 'string' item
+      */
+
+      return `${sentence}${string}${abbreviated[i] || ''}`;
+    }, '')
+
+  }
+
+  const first = 'Wes';
+  const last = 'Bos';
+  const sentence = addAbbrev`Hello my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'}, and ${'JS'}`;
+
+  const bio = document.querySelector('.bio');
+  const p = document.createElement('p');
+  p.innerHTML = sentence;
+  bio.appendChild(p);
+</script>
+</body>
+</html>

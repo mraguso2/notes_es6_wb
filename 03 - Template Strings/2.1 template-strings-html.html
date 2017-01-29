@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Template Strings!</title>
+</head>
+<body>
+<script>
+  const person = {
+    name: 'Wes',
+    job: 'Web Developer',
+    city: 'Hamilton',
+    bio: 'Wes is a really cool guy that loves to teach web development!',
+  };
+  
+  //old way - for multi line, would need to add forward slash
+  const text = "hello there \
+    How are you? \
+  ";
+  
+  //new way - not anymore
+  const text2 = `hello there
+    How are you?
+  `;
+  
+  //multi-line markup
+  const mikeMarkup = `
+    <div class="person">
+      <h2> ${person.name}
+        <span class="job">${person.job}</span>
+      </h2>
+      <p class="location">${person.city}</p>
+      <p class="bio">${person.bio}</p>
+    </div>
+  `;  
+  
+//  const markup = `
+//    <div class="person">
+//      <h2>
+//        ${person.name}
+//        <span class="job">${person.job}</span>
+//      </h2>
+//      <p class="location">${person.city}</p>
+//      <p class="bio">${person.bio}</p>
+//    </div>
+//  `;
+
+  console.log(mikeMarkup);
+  document.body.innerHTML = mikeMarkup;
+
+</script>
+</body>
+</html>

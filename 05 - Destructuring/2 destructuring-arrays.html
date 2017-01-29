@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring Arrays</title>
+</head>
+<body>
+<script>
+  //Destructuring also works in arrays
+  //when pulling from an array, use [ ] to destructure
+  //when pulling from an object, use { } to destructure
+
+  const details = ['Wes Bos', 123, 'wesbos.com'];
+  
+  //old way
+  //const name = details[0];
+
+  //based on index value want to get data out
+  //takes first, second and third thing in details and make variables
+  const [name, id, website] = details;
+  console.log(name, id, website);
+
+  //data is in a string but with a perfect separator ','
+  const data = 'Basketball,Sports,90210,23,wes,bos,cool';
+  //array destructuring from is built on the fly by splitting the data string
+  const [itemName, category, sku, inventory] = data.split(',');
+  //will create 4 variables destructuring from an array
+  console.log(itemName, category, sku, inventory);
+
+  //nothing happens if you destructure an array or object that is not the same length
+  //it will just throw those other one's out and not set them to anything unless 
+  //you do a catch all or rest operator
+  const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];
+
+  //rest operator ... gives you the rest 
+  const [captain, assistant, ...players] = team;
+  //captain = Wes
+  //assistant = Harry
+  //players = ['Sarah', 'Keegan', 'Riker'] -- the rest of the items
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow functions examples</title>
+</head>
+
+<body>
+    <script>
+        const race = '100m Dash';
+        const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+        
+        //sometimes application has data in nonideal format
+        //this would be better in an object
+        /*
+        {
+          name: 'Wes Bos',
+          place: 1,
+          race: race
+        }
+        */        
+        
+        //it is an implicit return when you remove the {} but 
+        //when you want to implicit return an object{} you
+        //need () around the implicit returned {} = ({})
+        const win = winners.map((winner, i) => ({
+            name: winner,
+            race, //same thing as saying race:race
+            place: i + 1
+        }));
+        console.log(win);
+
+        const ages = [23, 62, 45, 234, 2, 62, 234, 62, 34];
+
+        //filtering if age is greater than or equal to 60 will return true
+        const old = ages.filter(age => age >= 60);
+        console.log(old);
+        
+        const young = ages.filter(age => age <= 59);
+        console.log(young);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>let and const</title>
+</head>
+
+<body>
+    <script>
+        //const variables cannot be updated, let variables are meant to be updated
+        const key = 'abc123';
+        // key = 'abc1234' ~ would return an error 
+        //const stands for constant 
+        
+        let points = 50;
+        //let points = 60 ~ would cause an error beause points is already declared
+        //var would let you do this - helps prevent declaring a variable twice
+        let winner = false;
+        
+        if(points > 40) {
+            console.log('it ran');
+            let winner = true;
+            console.log(winner); //returns true
+        }
+        console.log(winner) //returns false - let is block scoped!
+        
+        //can still change obj properties with const but can't assign person something else
+        //"person is me, attributes about me will change"
+        const person = {
+            name: 'Wes',
+            age: 28
+        }
+        
+        //not part of es6
+        //cannot change anything on that variable/obj properties 
+        const wes = Object.freeze(person); //not part of es6
+        
+    </script>
+</body>
+
+</html>

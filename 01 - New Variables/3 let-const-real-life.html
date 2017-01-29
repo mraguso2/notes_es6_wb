@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>let and const real world</title>
+</head>
+
+<body>
+    <script>
+        
+        //let and const remove the need for IIFE's
+        //block scoped so put variables in a block and variables scoped to that block
+        {
+            const name = 'wes';
+            console.log(name);
+        }
+        
+        
+        /*
+        using var the i variable would leak out of the for loop
+        keeps overwriting the i variable
+        for (var i = 0; i < 10; i++) {
+            console.log(i);
+            setTimeout(function() {
+                console.log('The number is ' + i);
+            }, 1000);
+        }*/
+        
+        //using let creates block scope - creates a new i variable in memory everytime 
+        for (let i = 0; i < 10; i++) {
+            console.log(i);
+            setTimeout(function() {
+                console.log('The number is ' + i);
+            }, 1000);
+        }
+        
+    </script>
+</body>
+
+</html>
