@@ -18,10 +18,24 @@
 <script>
   const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
 
-  // for (const [i, cut] of cuts.entries()) {
-  //   console.log(`${cut} is the ${i + 1} item`);
-  // }
+  for (const cut of cuts) {
+    console.log(cut);
+  }
+  console.log('************')
+  /* if you iterate over not just the array but the array iterator = cuts.entries()
+   * cut would become an array of [index, cut] BUT you can use destructing here and 
+   * rewrite the condition to: const [i, cut] of cuts.entries()
+  */
 
+  for (const [i, cut] of cuts.entries()) {
+    console.log(`${cut} is the ${i + 1} item`);
+  }
+
+  console.log('************')
+  
+  /* Could just convert arguments into an array and then use reduce to sum
+   * but this is an example showing if you couldn't convert to an array 
+  */
   // function addUpNumbers() {
   //   let total = 0;
   //   for (const num of arguments) {
@@ -31,8 +45,9 @@
   //   return total;
   // }
 
-  // addUpNumbers(10,23,52,34,12,13,123);
-
+  //addUpNumbers(10,23,52,34,12,13,123);
+  
+  //Loop over a String
   // const name = 'Wes Bos';
   // for (const char of name) {
   //   console.log(char);

@@ -25,9 +25,11 @@
   
 
   //With destructuring you can sort of return multiple values from a function
-  //**New way w/ destructuring - immediately destructure the returning an object
+  //**New way w/ destructuring - immediately destructure the returning object
   const { USD, GPB, AUD, MEX } = convertCurrency(100);
-  //Doesn't matter the order ^ because from an object not an array
+  /* Doesn't matter the order ^ because from an object not an array and 
+   * destructuring objects matches keys -> USD matches USD key in returned object
+  */
   console.log(USD, AUD);
   //can create 4 variables equal to country's conversion
 

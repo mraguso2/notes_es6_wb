@@ -14,6 +14,17 @@
     sugar: 10
   };
 
+  /* Can't use the "for of" for objects just yet - ES2017 will include Object.entries() method 
+   * but you can get the object keys (the names from the name-value obj pairs)
+  */
+  for (const prop of Object.keys(apple)) {
+    const value = apple[prop];
+    console.log(value, prop);
+  }
+  
+  console.log('********');
+  
+  //another way to iterate through objects - for in
   for (const prop in apple) {
     const value = apple[prop];
     console.log(value, prop);
