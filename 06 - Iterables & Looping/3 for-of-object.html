@@ -23,8 +23,9 @@
   }
   
   console.log('********');
-  
+
   //another way to iterate through objects - for in
+  //Will iterate over EVERYTHING though just like with arrays - through prototype
   for (const prop in apple) {
     const value = apple[prop];
     console.log(value, prop);
