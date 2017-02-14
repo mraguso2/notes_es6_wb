@@ -11,22 +11,46 @@
   </div>
 <body>
 <script>
-  // const people = document.querySelectorAll('.people p');
-  // const peopleArray = Array.from(people, person => {
-  //   console.log(person);
-  //   return person.textContent;
-  // });
-  // console.log(peopleArray);
+  /* Array from and Array of are not on the prototype they are actually on the Array
+   * NO "Array.prototype.of()" vs YES "Array.of()" same for Array.from()
+   * Array.from will take something that is array-ish and turn them into an array
+  */
 
-  // // const names = people.map(person => person.textContent);
+  //*** Way #1 
+  //people1 is a nodelist
+  const people1 = document.querySelectorAll('.people p'); // all the p's inside of people
+  // const names = people.map(person => person.textContent); //typeError people is a nodelist not an array - can't use .map()
+  const peopleArray1 = Array.from(people1);
+  const names1 = peopleArray1.map(person => person.textContent);
+  console.log(`names1 = ${names1}`);
+
+  console.log('**********');
+
+  //*** Way #2 
+  const people2 = Array.from(document.querySelectorAll('.people p')); //array not nodelist
+  const names2 = people2.map(person => person.textContent);
+  console.log(`names2 = ${names2}`);
+
+  console.log('**********');  
+
+  //*** Way #3
+  const people3 = document.querySelectorAll('.people p'); // all the p's inside of people  
+  //Array.from takes a second argument - map function
+  const peopleArray3 = Array.from(people3, person => {
+    //console.log(person); //would be the actual dom node
+    return person.textContent;
+  });
+  console.log(`peopleArray3 = ${peopleArray3}`);
+
+  console.log('********');
 
   function sumAll() {
-    const nums = Array.from(arguments);
+    const nums = Array.from(arguments); //because arguments is not a true array
     return nums.reduce((prev, next) => prev + next, 0);
   }
-
   sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
 
+  //creates an array of the individual arguments given 
   const ages = Array.of(12,4,23,62,34);
   console.log(ages);
 
