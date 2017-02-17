@@ -7,6 +7,8 @@
 <body>
 <script>
   /* eslint-disable */
+  // dont even need lodash with .find and .findIndex
+  //These are on the Array prototype...Array.prototype.find() etc.
   const posts = [
      {
         "code":"BAcyDyQwcXX",
@@ -177,11 +179,19 @@
         "display_src":"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/e35/11326072_550275398458202_1726754023_n.jpg"
      }
   ];
-  const code = 'VBgtGQcSf';
-  const post = posts.find(post => post.code === code);
+  let code = 'VBgtGQcSf'
+  //Will find one object in the Array
+  const post = posts.find(post => post.code === code)
+  console.log('post= ' + JSON.stringify(post));
+  
+  //if you wanted more than one - use .filter
+  const post2 = posts.filter(post => post.code === code || post.code === 'FpTyHQcau')
+  console.log(post2);
 
-  const postIndex = posts.findIndex(post => post.code === code);
-  console.log(postIndex);
+  //when you need to find out where in the array some code is - use .findIndex
+  const postIndex = posts.findIndex(post => post.code === code)
+  console.log(`postIndex = ${postIndex}`);
+
 
 </script>
 </body>

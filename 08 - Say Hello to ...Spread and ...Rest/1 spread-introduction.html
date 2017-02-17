@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The ...Spread Operator</title>
+</head>
+<body>
+<script>
+  /* spread operator (...) takes every single item from an iterable (anything you loop over_"for of" loop)
+   * and apply it to the containing element or array 
+   */
+  const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
+  const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+
+  const oldWaypizzas = featured.concat(specialty);
+
+  //you can take existing arrays and SPREAD it into a new one
+  const newPizzas = [...featured, 'veg', ...specialty];
+
+  //it would reference pizzas if you wanted to copy into new variable, so you would need to do this:
+  const oldFridayPizzas = [].concat(newPizzas);
+  oldFridayPizzas[0] = 'Thin Crust'; // wont overwrite original newPizzas array 
+
+  //new, better way to copy array without reference_ spread into new array
+  const fridayPizzas = [...newPizzas];
+
+  const deepDish = {
+    pizzaName: 'Deep Dish',
+    size: 'Medium',
+    ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+  };
+
+</script>
+</body>
+</html>
