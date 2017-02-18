@@ -5,11 +5,31 @@
   <title>Object Literal Upgrades</title>
 </head>
 <body>
+  <style>
+  h2 {
+    color: #ffc600;
+    background-color: #0039ff;
+    padding: 15px;
+  }
+  </style>
+  <h2>Test Words</h2>
 <script>
   const first = 'snickers';
   const last = 'bos';
   const age = 2;
   const breed = 'King Charles Cav';
+
+  //old way where setting prop name to var name even tho same thing
+  const oldDog = {
+    first: first,
+    last: last,
+    age: age
+  }
+
+  /* If property name and variable name you are setting it to are the exact same thing
+   * then you do not need to do this twice 'first: first' would just be 'first'
+   */
+  //New, Better Way!
   const dog = {
     firstName: first,
     last,
@@ -18,6 +38,20 @@
     pals: ['Hugo', 'Sunny']
   };
   console.log(dog);
+
+  //old way to add an obj method
+  const oldModal = {
+    create: function() {
+
+    },
+    open: function() {
+
+    }
+  } 
+
+  /* Update to object methods - shorthand version 
+   * Can remove the ": function" and does not monkey with the this scope
+   */
 
   const modal = {
     create(selector) {
@@ -31,6 +65,8 @@
     }
   }
 
+  //last update is around computed property names
+
   function invertColor(color) {
       return '#' + ("000000" + (0xFFFFFF ^ parseInt(color.substring(1),16)).toString(16)).slice(-6);
   }
@@ -38,6 +74,8 @@
   const key = 'pocketColor';
   const value = '#ffc600';
 
+  //can now dynamically set property name's in obj' - compute using template strings
+  //dynamically setting 'pocketColorOpposite'
   const tShirt = {
     [key]: value,
     [`${key}Opposite`]: invertColor(value)
@@ -45,7 +83,8 @@
 
   const keys = ['size', 'color', 'weight'];
   const values = ['medium', 'red', 100];
-
+  
+  //computed property keys
   const shirt = {
     [keys.shift()]: values.shift(),
     [keys.shift()]: values.shift(),

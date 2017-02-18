@@ -31,8 +31,15 @@
 
 <script>
   const heading = document.querySelector('.jump');
-  const letters = [...heading.textContent].map(letter => `<span>${letter}</span>`).join('');
-  heading.innerHTML = letters;
+  
+  function sparanWrap(word) {
+    return [...word].map(letter => `<span>${letter}</span>`).join('');
+  } 
+  console.log(sparanWrap(heading.textContent))
+  
+  //const letters = [...heading.textContent].map(letter => `<span>${letter}</span>`).join('');
+  
+  heading.innerHTML = sparanWrap(heading.textContent);
 </script>
 </body>
 </html>

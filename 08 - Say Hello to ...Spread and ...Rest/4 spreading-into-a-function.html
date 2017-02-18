@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spread Examples</title>
+</head>
+<body>
+<script>
+  const inventors = ['Einstein', 'Newton', 'Galileo'];
+  const newInventors = ['Musk', 'Jobs'];
+  
+  // Below would just add the array not the array's content
+  // inventors.push(newInventors); 
+  
+  /* spread into the array
+   * it will take Musk and Jobs and pass them as indivi args
+   */
+  inventors.push(...newInventors);
+  console.log(inventors);
+
+  const name = ['Wes', 'Bos'];
+  function sayHi(first, last) {
+    alert(`Hey there ${first} ${last}`);
+  }
+  //you can spread the array as arguments into a function
+  //sayHi(...name);
+
+  function greeting(greeting, first, last) {
+    console.log(`${greeting}, ${first} ${last}!`)
+  }
+  const greet = ['hello', 'mike', 'r']
+  //spreads greet array into individual arguments
+  greeting(...greet);
+
+</script>
+</body>
+</html>
+
+
