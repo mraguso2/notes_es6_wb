@@ -6,7 +6,13 @@
 </head>
 <body>
 <script>
+/* promises are often used when fetching JSON api and doing some ajax work
+ * Promise is something that will happen in the future but not immediately
+ * fetch returns a promise
+ */
 const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
+//.then function only run when data comes back and promise is successful
+//.catch function will run when there is an error anywhere along the way
 
 postsPromise
   .then(data => data.json())

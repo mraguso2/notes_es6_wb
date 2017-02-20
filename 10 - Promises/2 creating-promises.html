@@ -6,19 +6,23 @@
 </head>
 <body>
 <script>
+//promise constructure takes one function which passes you resolve and reject
   const p = new Promise((resolve, reject) => {
+    //resolve('Mike is cool'); 
+    
     setTimeout(() => {
-      reject(Error('Err wes isn\'t cool'));
+      //to help with error stack make it an Error() object
+      reject(Error('Mike is not cool'));
     }, 1000);
-  });
-
+  })
+  
   p
     .then(data => {
       console.log(data);
     })
     .catch(err => {
       console.error(err);
-    });
+    })
 
 </script>
 </body>
