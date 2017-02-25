@@ -7,38 +7,50 @@
 <body>
 <script>
 
+  //getting the weather promise
+  const weather = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ temp: 29, conditions: 'Sunny with Clouds'});
+    }, 2000);
+  });
 
+  //grabbing some tweets promise
+  const tweets = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(['I like cake', 'BBQ is good too!']);
+    }, 500);
+  });
 
-  // const weather = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve({ temp: 29, conditions: 'Sunny with Clouds'});
-  //   }, 2000);
-  // });
+  //Sometimes you just want all promises to resolve before running .then()
+  //because they are not dependent on each other   
+  Promise
+    .all([weather, tweets]) //waits for both tweets and weather to resolve = 2000ms
+    .then(responses => {
+      const [weatherInfo, tweetsInfo] = responses;
+      console.log('*********');
+      console.log(weatherInfo, tweetsInfo);
+    })
 
-  // const tweets = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve(['I like cake', 'BBQ is good too!']);
-  //   }, 500);
-  // });
+  //wesbos blog api call
+  const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
+  //paris transit system api 
+  const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
 
-  // Promise
-  //   .all([weather, tweets])
-  //   .then(responses => {
-  //     const [weatherInfo, tweetInfo] = responses;
-  //     console.log(weatherInfo, tweetInfo)
-  //   });
+  //listen to when both promises resolve 
+  Promise
+    .all([postsPromise, streetCarsPromise])
+    .then(responses => {
+      /* had a problem where needed to convert "body: ReadableStream" into .json()
+       * so need to return a Promise.all and call json on each one.
+       * can't use JSON.parse(res.body) because there are many different types of data that can come back
+       * so just use res.json()
+       */
+      return Promise.all([responses.map(res => res.json())])
+    })
+    .then(responses => {
+      console.log(responses);
+    })
 
-  // const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
-  // const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
-
-  // Promise
-  //   .all([postsPromise, streetCarsPromise])
-  //   .then(responses => {
-  //     return Promise.all(responses.map(res => res.json()))
-  //   })
-  //   .then(responses => {
-  //     console.log(responses);
-  //   });
 
 </script>
 </body>

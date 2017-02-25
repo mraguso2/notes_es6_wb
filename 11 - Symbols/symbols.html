@@ -6,22 +6,34 @@
 </head>
 <body>
 <script>
-  const wes = Symbol('Wes');
+  //symbols are unique identifers - help us avoid naming collisions
+  const wes = Symbol('Wes'); //'Wes' is the descriptor not a value
   const person = Symbol('Wes');
+  
+  //will never have a naming collision
+  console.log(wes === person); //false 
+  console.log(wes == person); //false 
 
+  //have two olivia's in classroom
+  //can use Symbol to name them and avoid any duplicate name collisions
   const classRoom = {
     [Symbol('Mark')] : { grade: 50, gender: 'male' },
     [Symbol('olivia')]: { grade: 80, gender: 'female' },
     [Symbol('olivia')]: { grade: 80, gender: 'female' },
   };
-
+  
+  /* Symbols are enumerable - cannot loop over them
+   * some people store private data in Symbols for ^ that reason 
+   * test it below (cannot use "for of" to loop around objs)
+   */
   for (const person in classRoom) {
-    console.log(person);
+    console.log(person); //does not log anything
   }
 
-  const syms = Object.getOwnPropertySymbols(classRoom);
-  const data = syms.map(sym => classRoom[sym]);
-  console.log(data);
+  //.getOwnPropertySymbols(object) to access the Symbols 
+  const syms = Object.getOwnPropertySymbols(classRoom); //returns array of Symbols
+  const data = syms.map(sym => classRoom[sym]); //returns Symbols values
+  console.log(data); 
 
 </script>
 </body>
