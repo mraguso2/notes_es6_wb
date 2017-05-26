@@ -7,6 +7,8 @@ import apiKey from './src/config';
 // named import - needs to exact name in module and need { }
 import { restEndpoint as endPoint, greet  } from './src/config';
 
+import User, { createURL, gravatar } from './src/user';
+
 
 console.log(apiKey);
 console.log(endPoint);
@@ -19,3 +21,10 @@ greet({
   beerChoice: 'IPA' 
 });
 
+const mike = new User('Mike Raguso', 'michael.raguso@gmail.com', 'mikeraguso.com');
+console.log(mike);
+
+const profile = createURL(mike.name);
+console.log(profile);
+
+const image = gravatar(mike.email);
