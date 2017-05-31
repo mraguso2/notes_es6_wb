@@ -5,9 +5,15 @@
   <title>System JS</title>
 </head>
 <body>
+  <!-- SystemJs is great for quickly bundling up es6 modules sits ontop of 
+       npm and runs in the browser - no overhead needed like setting up webpack
+  -->
   <script src="https://jspm.io/system@0.19.js"></script>
   <script>
-
+    // first configure SystemJS
+    // enter entry point
+    System.config({ transpiler: 'babel' });
+    System.import('./main.js');
   </script>
 </body>
 </html>
