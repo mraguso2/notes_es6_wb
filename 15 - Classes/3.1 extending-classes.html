@@ -6,15 +6,16 @@
 </head>
 <body>
 <script>
+  // class for any animal
   class Animal {
     constructor(name) {
       this.name = name;
-      this.thirst = 100;
+      this.thrist = 100;
       this.belly = [];
     }
     drink() {
-      this.thirst -= 10;
-      return this.thirst;
+      this.thrist -= 10;
+      return this.thrist;
     }
     eat(food) {
       this.belly.push(food);
@@ -22,17 +23,20 @@
     }
   }
 
+  // can extend a class to include more specific methods/properties
   class Dog extends Animal {
     constructor(name, breed) {
-      super(name);
+      // ***you first need to call the thing you are extending before you can extend it
+      // would need to call Animal constructor first
+      super(name); //keyword super will call what you are extending
       this.breed = breed;
     }
     bark() {
-      console.log('Bark bark I\'m a dog');
+      console.log('Bark Bark Bark!!!');
     }
   }
 
-  const rhino = new Animal('Rhiney');
+  const rhino = new Animal('Rhiny');
   const snickers = new Dog('Snickers', 'King Charles');
 
 </script>

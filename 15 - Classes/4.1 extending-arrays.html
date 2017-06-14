@@ -6,9 +6,13 @@
 </head>
 <body>
 <script>
+
+  // you can extend the built-ins (Array, String, etc.)
+  
   class MovieCollection extends Array {
     constructor(name, ...items) {
-      super(...items);
+      // need to create the thing extending first
+      super(...items); // spread items into the array
       this.name = name;
     }
     add(movie) {
@@ -16,6 +20,7 @@
     }
     topRated(limit = 10) {
       return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit);
+      // return this.sort((a, b) => (b.stars - a.stars)).slice(0, limit);
     }
   }
 
@@ -26,7 +31,7 @@
     { name: 'King of the Road', stars: 8 }
   );
 
-  movies.add({ name: 'Titanic', stars: 5 });
+  movies.add({name: 'Finding Nemo', stars: 9});
 
 </script>
 </body>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inheritance Review</title>
+</head>
+<body>
+<script>
+  // 2 types of es6 classes: class declaration and class expression
+
+  // class declaration__ class Dog {}
+  // class expression__  const Dog = class {}
+  
+  class Dog2 {
+    // uses new object syntax no function keyword
+    // only required method is a constructor
+    constructor(name, breed) {
+      this.name = name;
+      this.breed = breed;
+    }
+    bark() {
+      console.log(`Bark Bark! My name is ${this.name}`);
+    }
+    cuddle() {
+      console.log(`I love you owner!`);
+    }
+    
+    // static method is not on prototpye but actual class: Dog.info()
+    static info() {
+      console.log(`A dog is better than a cat`);
+    }
+
+    // getters and setters
+    // not a method, it is a property that is sortof computed
+    get description() {
+      return `${this.name} is a ${this.breed} type of dog`;
+    }
+    set nicknames(value) {
+      // can't use this.nicknames because using nicknames as setter name
+      this.nick = value.trim();
+    }
+    // now we need a getter to get the nicknames set
+    get nicknames() {
+      return `${this.nick.toUpperCase()}`;
+    }
+  }
+
+  // function Dog(name, breed) {
+  //   this.name = name;
+  //   this.breed = breed;
+  // }
+
+  // Dog.prototype.bark = function() {
+  //   console.log(`Bark Bark! My name is ${this.name}`);
+  // };
+
+  // Dog.prototype.cuddle = function() {
+  //   console.log(`I love you owner!`);
+  // };
+
+  const snickers = new Dog2('Snickers', 'King Charles');
+  const sunny = new Dog2('Sunny', 'Golden Doodle');
+
+</script>
+</body>
+</html>
