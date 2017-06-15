@@ -14,13 +14,15 @@
 
   function* listPeople() {
     let i = 0;
-    yield i;
+    yield i; // 0 
     i++;
-    yield i;
+    yield i; // 1
     i++;
-    yield i;
+    yield i; // 2
   }
 
+  // create generator storing it in variable
+  // need to run people.next() to invoke the generator
   const people = listPeople();
 
   const inventors = [
@@ -34,14 +36,22 @@
   ];
 
   function* loop(arr) {
-    console.log(inventors);
+    console.log(inventors); // will not console until .next()
     for (const item of arr) {
-      yield item;
+      yield item; // will create
     }
   }
 
   const inventorGen = loop(inventors);
 
+  function* stopLight() {
+    yield 'Stop! Red Light';
+    yield 'GO! Green Light';
+    yield 'Slow Down! Yellow Light';
+  }
+
+  const stopLightGen = stopLight();
+  console.log(stopLightGen.next());
 
 </script>
 </body>
