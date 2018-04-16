@@ -1,6 +1,6 @@
 import slug from 'slug';
-import { url } from './config';
 import base64 from 'base-64';
+import { url } from './config';
 
 // default export
 export default function User(name, email, website) {

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const nodeEnv = process.env.NODE_ENV || 'production';
 // ^ variable for environment -> helps us do production builds and dev builds
 
-// 
+//
 module.exports = {
   devtool: 'source-map',
   // entry = where do you want to start your application
@@ -34,10 +34,10 @@ module.exports = {
       output: { comments: false },
       sourceMap: true
     }),
-    //env plugin
+    // env plugin
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify(nodeEnv)}
+      'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
     })
   ]
 
-}
+};
