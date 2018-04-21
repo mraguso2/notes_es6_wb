@@ -6,10 +6,14 @@
 </head>
 <body>
 <script>
+  // check to see if property exists regardless of case
   const safeHandler = {
+    // need to trap the set value
     set(target, name, value) {
+      // find key that person is trying to set
       const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
 
+      // if trying to set a new property AND there is a likeKey, throw an error
       if (!(name in target) && likeKey) {
         throw new Error(`Oops! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`);
       }
@@ -17,9 +21,11 @@
     }
   };
 
-  const saftey = new Proxy({ id: 100 }, safeHandler);
+  const saftey = new Proxy({ id: 100, status: 'live' }, safeHandler);
 
+  // trying to set the "id" with wrong case
   saftey.ID = 200;
+  // saftey.Status = 'dev';
 
 </script>
 </body>

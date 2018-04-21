@@ -14,8 +14,11 @@
       return target[name].replace(/(\d{3})(\d{3})(\d{4})/, '($1)-$2-$3');
     }
   }
-
+  // start with empty obj because no #'s to start with
   const phoneNumbers = new Proxy({}, phoneHandler);
+
+  phoneNumbers.cell = '(321) 8675309';
+  console.log(phoneNumbers.cell);
 </script>
 </body>
 </html>
