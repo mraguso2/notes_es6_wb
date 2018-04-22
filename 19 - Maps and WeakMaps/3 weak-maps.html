@@ -13,6 +13,7 @@
 <body>
 
 <script>
+  // very similar to weaksets.. not enumerable, no .size() method
   let dog1 = { name: 'Snickers' };
   let dog2 = { name: 'Sunny' };
 
@@ -24,6 +25,9 @@
 
   dog1 = null;
   dog2 = null;
+
+  console.log('wait for it...')
+  setTimeout(() => console.log(weak),10000);
 
 </script>
 </body>

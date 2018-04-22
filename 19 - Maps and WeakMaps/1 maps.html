@@ -6,14 +6,18 @@
 </head>
 <body>
 <script>
+  // sets are to arrays then maps are to objects
   const dogs = new Map();
 
-  dogs.set('Snickers', 3);
+  // keys and values can be any type
+  dogs.set('Snickers', 3); // setting a key and a value
   dogs.set('Sunny', 2);
   dogs.set('Hugo', 10);
 
+  // can loop over using forEach()
   dogs.forEach((val, key) => console.log(val, key));
 
+  // goood ole for of, gives us an array
   for (const [key, val] of dogs) {
     console.log(key, val);
   }

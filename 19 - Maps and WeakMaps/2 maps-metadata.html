@@ -19,17 +19,22 @@
 <button>Dancer 💃</button>
 
 <script>
+  // you can use an object as a key in map
   const clickCounts = new Map();
   const buttons = document.querySelectorAll('button');
 
+  // for each button, add to map with button as key and number as value
+  // and add eventlistner to each button to increment number in map
   buttons.forEach(button => {
     clickCounts.set(button, 0);
     button.addEventListener('click', function() {
-      const val = clickCounts.get(this);
-      clickCounts.set(this, val + 1);
+      const val = clickCounts.get(this)
+      clickCounts.set(this, val + 1)
       console.log(clickCounts);
-    });
-  });
+    })
+  })
+  // useful use case = when you want to store metadata not necessarily on object
+  // but about the object
 </script>
 </body>
 </html>

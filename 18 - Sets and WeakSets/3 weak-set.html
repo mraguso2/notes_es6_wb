@@ -6,14 +6,18 @@
 </head>
 <body>
 <script>
+  // a weakset can only contain Objects!
+  // cannot enumerate over it - no iterator on weakset
+  // there is no .clear() method - clears itself
   let dog1 = { name: 'Snickers', age: 3 };
   let dog2 = { name: 'sunny', age: 1 };
 
   const weakSauce = new WeakSet([dog1, dog2]);
 
   console.log(weakSauce);
-  dog1 = null;
-  console.log(weakSauce);
+  dog1 = null; // will be garbage collected
+  console.log('Wait for it...');
+  setTimeout(() => console.log(weakSauce), 10000)
 
 </script>
 </body>

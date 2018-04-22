@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brunch with Sets</title>
+</head>
+<body>
+<script>
+  const brunch = new Set();
+  // as people start coming in
+  brunch.add('wes');
+  brunch.add('Sarah');
+  brunch.add('Simone');
+  // ready to open!
+  const line = brunch.values(); // can now use .next() on line variable
+  console.log(line.next().value); // give us the generator item and .value gives us item value
+  console.log(line.next().value);
+  brunch.add('Heather'); // adding to brunch not line - will still be added to line generator
+  brunch.add('Snickers');
+  console.log(line.next().value);
+  console.log(line.next().value);
+  console.log(line.next().value);
+
+  const courses = new Set();
+  courses.add('math');
+  courses.add('english');
+  courses.add('history');
+  const classDay = courses.values();
+  console.log(classDay.next().value); // will remove item after
+
+</script>
+</body>
+</html>

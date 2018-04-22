@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sets</title>
+</head>
+<body>
+<script>
+  /* sets are like a unique array, can only add item once
+   * cant access items individually and not index based
+  */
+  const people = new Set();
+  people.add('Mike');
+  people.add('Cassie');
+  people.add('Jen');
+
+  console.log(people.values()); // SetIterator -- can use generator .next()
+
+  for (const person of people) {
+    console.log(person);
+  }
+
+  // pass it an array to creat on the fly
+  const students = new Set(['Wes', 'Kara', 'Tony']);
+
+  const dogs = ['Snickers', 'Sunny'];
+  const dogSet = new Set(dogs);
+
+  // .has to see if in there
+  console.log(students.has('Tony'));
+
+</script>
+</body>
+</html>
