@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Async Await</title>
+</head>
+
+<body>
+  <script>
+    // async function go() {
+    //   // these are independent from one another so don't need await
+    //   const p1 = fetch('https://api.github.com/users/wesbos');//.then(r => r.json());
+    //   const p2 = fetch('https://api.github.com/users/stolinski');//.then(r => r.json());
+    //   // wait for both of them to come back
+    //   const res = await Promise.all([p1, p2]);
+    //   console.log(res);
+    //   const dataPromises = res.map(data => data.json());
+    //   const [wes, scott] = await Promise.all(dataPromises);
+    //   console.log(wes, scott);
+    // }
+
+    // go();
+
+    async function getData(names) {
+      // const promises = names.map(name => fetch(`https://api.github.com/users/${name}`))
+      const promises = names.map(name => fetch(`https://api.github.com/users/${name}`).then(r => r.json()))
+      const people = await Promise.all(promises); // no destructuring to allow flexibility on args
+      console.log(people);
+    }
+
+    getData(['wesbos', 'stolinski', 'mraguso2'])
+  </script>
+</body>
+
+</html>

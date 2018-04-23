@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Native Promises</title>
+</head>
+
+<video controls class="handsome"></video>
+
+<body>
+  <script>
+    fetch('https://api.github.com/users/mraguso2')
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.error('Oh Noo!')
+        console.error(err);
+      })
+
+    const video = document.querySelector('.handsome');
+    navigator.mediaDevices.getUserMedia({video: true}).then((mediaStream) => {
+        video.srcObject = mediaStream;
+        video.load();
+        video.play();
+      }).catch(err => {
+        alert('Hey fool, you gotta accept media access');
+        console.error(err);
+      })
+  </script>
+</body>
+
+</html>

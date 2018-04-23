@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Custom Promises</title>
+</head>
+
+<body>
+  <script>
+    function breathe(amount) {
+      return new Promise((resolve, reject) => {
+        if (amount < 500) {
+          reject('That is too small of a value');
+        }
+        setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+      })
+    }
+
+    // higher order function, fn that takes a fn and returns a fn
+    // useful but shouldn't be used all the time because you want to catch
+    // errors directly in function because you know how you want to handle it
+    function catchErrors(fn) {
+      // use rest & spread:fn() below operator to allow flexibility
+      return function(...args) {
+        return fn(...args).catch((err) => {
+          console.error('ahh error!');
+          console.error(err);
+        });
+      }
+    }
+
+    // no top level await - must have async function specified
+    async function go(first, last) {
+      // try catch block one way to handle error handling
+      // try {
+      //   console.log('start');
+      //   const res = await breathe(600); // wait until breathe fn resolves or rejects a val
+      //   console.log(res);
+      //   const res2 = await breathe(1000);
+      //   console.log(res2);
+      //   const res3 = await breathe(800);
+      //   console.log(res3);
+      //   console.log('end');
+      // } catch (err) {
+      //   console.error('Oh no!');
+      //   console.error(err);
+      // }
+
+      console.log(`Starting for ${first} ${last}`);
+      const res = await breathe(600); // wait until breathe fn resolves or rejects a val
+      console.log(res);
+      const res2 = await breathe(1000);
+      console.log(res2);
+      const res3 = await breathe(300);
+      console.log(res3);
+      console.log('end');
+    }
+
+    const wrappedFunction = catchErrors(go);
+    wrappedFunction('mike', 'rags');
+
+  </script>
+</body>
+
+</html>
