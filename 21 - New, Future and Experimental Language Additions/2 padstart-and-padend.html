@@ -10,7 +10,7 @@
     const strings = ['short', 'medium size', 'this is really really long', 'this is really reall really really really really long'];
     // grab first string aka the longest string after sort
     const longestString = strings.sort(str => str.length).map(str => str.length)[0];
-
+    // example right align all strings - add padding based on longest string
     strings.forEach(str => console.log(str.padStart(longestString, '-')));
   </script>
 </body>
